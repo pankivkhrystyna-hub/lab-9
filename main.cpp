@@ -106,6 +106,34 @@ void replace_negatives() {
     cout << "\n\n";
 }
 
+
+//7
+void calculate_stats() {
+    cout << "Task 7: vector Sum and Average (Capturing Lambda)\n";
+    vector<int> vals = {10, 20, 30, 40, 50};
+    double sum = 0;
+
+    for_each(vals.begin(), vals.end(), [&](int n) {
+        sum += n;
+    });
+
+    double avg = vals.empty() ? 0 : sum / vals.size();
+    cout << "Sum: " << sum << ", Average: " << avg << "\n\n";
+}
+
+//8
+void count_vowels() {
+    cout << "Task 8: count vowels in string (Lambda)\n";
+    string text = "STL Algorithms are powerful";
+    string vowels = "aeiouAEIOU";
+
+    int count = count_if(text.begin(), text.end(), [&](char c) {
+        return vowels.find(c) != string::npos;
+    });
+
+    cout << "Text: \"" << text << "\"\n";
+    cout << "Vowels count: " << count << "\n";
+}
 int main() {
     srand(static_cast<unsigned>(time(0)));
 
@@ -115,5 +143,8 @@ int main() {
     how_much_elements();
     show_large_stock();
     replace_negatives();
+    calculate_stats();
+    count_vowels();
+
     return 0;
 }
