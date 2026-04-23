@@ -78,7 +78,33 @@ void how_much_elements() {
     cout << "In range 15-45: " <<count_if(s.begin(), s.end(), WithinRange(15, 45)) << "\n\n";
 }
 
+//5
+void show_large_stock() {
+    cout << "Task 5: map filter > 100 (Lambda)\n";
+    map<string, int> stock = {{"Apples", 150}, {"Bananas", 50}, {"Oranges", 200}, {"Milk", 90}};
 
+    for_each(stock.begin(), stock.end(), [](const pair<string, int>& item) {
+        if (item.second > 100) {
+            cout << item.first << ": " << item.second << " | ";
+        }
+    });
+    cout << "\n\n";
+}
+
+
+//6
+void replace_negatives() {
+    cout << "Task 6: vector replace negatives with 0 (Lambda)\n";
+    vector<int> vec = {15, -3, 0, -10, 7, -1};
+
+    // Алгоритм замінює елемент, якщо лямбда повертає true
+    replace_if(vec.begin(), vec.end(), [](int n) {
+        return n < 0;
+    }, 0);
+
+    for (int n : vec) cout << n << " ";
+    cout << "\n\n";
+}
 
 int main() {
     srand(static_cast<unsigned>(time(0)));
@@ -87,5 +113,7 @@ int main() {
     array_sort();
     processing();
     how_much_elements();
+    show_large_stock();
+    replace_negatives();
     return 0;
 }
